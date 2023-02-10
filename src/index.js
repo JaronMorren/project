@@ -1,5 +1,6 @@
 const express = require('express');
 const fileSystem = require('fs');
+const crypto = require('crypto');
 
 const app = express();
 app.use(express.json());
@@ -27,6 +28,16 @@ app.get('/talker/:id', (request, response) => {
     }
   });
 });
+
+// https://www.geeksforgeeks.org/node-js-crypto-randombytes-method/
+app.post('/login', async (_request, response) => {
+  const tokenGenerator = crypto.randomBytes(8).toString('hex');
+  console.log(tokenGenerator);
+
+  return response.status(200).json({
+    token: tokenGenerator,
+  });
+  });  
 
 app.listen(3000, () => {
   console.log('Hi there, I am Online');
