@@ -82,6 +82,14 @@ async (request, response) => {
     // https://bobbyhadz.com/blog/javascript-array-find-index-of-object-by-property
     const talkerID = talkers.findIndex((talker) => talker.id === Number(id));
     talkers[talkerID] = editTalker;
-    await writeTalkersData(talkers);
+     writeTalkersData(talkers);
     return response.status(200).json(editTalker);
+  });
+
+  app.delete('/talker/:id', tokenValidation, async (request, response) => {
+    const talkers = await readTalkersData();
+    const { id } = request.params;
+    const removeTalker = talkers.filter((object) => object.id !== Number(id));
+     writeTalkersData(removeTalker);
+    return response.status(204).json();
   });
