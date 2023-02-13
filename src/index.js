@@ -33,6 +33,18 @@ app.get('/', (_request, response) => {
   response.status(200).send();
 });
 
+app.get('/talker/search',
+tokenValidation,
+async (request, response) => {
+  const { q } = request.query;
+  const talkers = await readTalkersData();
+  if (!q) {
+    return response.status(200).json(talkers);
+  }
+  const talkerQuery = await talkers.filter((talker) => talker.name.includes(q));
+  return response.status(200).json(talkerQuery);
+});
+
 // https://www.geeksforgeeks.org/node-js-fs-readfile-method/
 app.get('/talker', (_request, response) => {
   fileSystem.readFile('src/talker.json', 'utf-8', (_error, data) => {
