@@ -1,7 +1,7 @@
 const express = require('express');
 const fileSystem = require('fs');
 const crypto = require('crypto');
-const { readTalkersData, editTalkersData } = require('./utilities/fileSystemTalker');
+const { readTalkersData, writeTalkersData } = require('./utilities/fileSystemTalker');
 const loginValidation = require('./middleware/loginValidation');
 const ageValidation = require('./middleware/ageValidation');
 const nameValidation = require('./middleware/nameValidation'); 
@@ -63,6 +63,25 @@ async (request, response) => {
   const talkers = await readTalkersData();
   const createTalker = { ...request.body, id: talkers.length + 1 };
   const updateTalkers = [...talkers, createTalker];
-  editTalkersData(updateTalkers);
+  writeTalkersData(updateTalkers);
   return response.status(201).json(createTalker);
 }); 
+
+app.put('/talker/:id',
+tokenValidation,
+nameValidation,
+ageValidation, 
+talkValidation,
+watchedAtValidation,
+rateValidation,
+async (request, response) => {
+  const talkers = await readTalkersData();
+  const { id } = request.params;
+  const { name, age, talk: { watchedAt, rate } } = request.body;
+    const editTalker = { age, name, talk: { watchedAt, rate }, id: Number(id) };
+    // https://bobbyhadz.com/blog/javascript-array-find-index-of-object-by-property
+    const talkerID = talkers.findIndex((talker) => talker.id === Number(id));
+    talkers[talkerID] = editTalker;
+    await writeTalkersData(talkers);
+    return response.status(200).json(editTalker);
+  });

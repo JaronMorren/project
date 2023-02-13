@@ -9,7 +9,7 @@ async function readTalkersData() {
   }
 }
 
-async function editTalkersData(talkersData) {
+async function writeTalkersData(talkersData) {
   try {
     const updatedData = JSON.stringify(talkersData);
     await fileSystem.writeFile('src/talker.json', updatedData);
@@ -20,5 +20,5 @@ async function editTalkersData(talkersData) {
 
 module.exports = {
   readTalkersData,
-  editTalkersData,
+  writeTalkersData,
 };
