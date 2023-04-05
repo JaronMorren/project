@@ -1,13 +1,40 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+🛠 Skills
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+Javascript,NodeJS
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+This repository contains the speaker manager project. The purpose of this project is to provide an interface for event organizers to manage speakers for their events.
+
+Getting Started
+
+To get started with this project, you will need to clone this repository to your local machine using the following command:
+
+bash
+
+git clone https://github.com/JaronMorren/project-speaker-manager.git
+
+Prerequisites
+
+Before you can begin working with this project, you will need to ensure that you have the following installed on your machine:
+
+    Node.js
+    npm
+
+Installation
+
+To install this project, follow these steps:
+
+    Navigate to the project directory in your terminal.
+    Run npm install to install the project dependencies.
+
+Usage
+
+To use this project, follow these steps:
+
+    Navigate to the project directory in your terminal.
+    Run npm start to start the development server.
+    Open your web browser and navigate to http://localhost:3000 to view the application.
+    Use the application to manage speakers for your events.
+
+Contributing
+
+If you would like to contribute to this project, please fork the repository and submit a pull request with your changes. We welcome all contributions, including bug fixes and new features.
